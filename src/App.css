@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f1f7ed;
+}
+
+/*   Input   */
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin: 0 0 0.75rem;
+}
+.input-container label {
+  margin-right: 0;
+  flex: 0 0 110px;
+  color: #243e36;
+  font-weight: 500;
+}
+.main-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 18px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background-color: #f7fbf5;
+}
+.main-input:focus {
+  box-shadow: 1px 1px 10px #243e36;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 20px;
+}
+
+.main-container > h1 {
+  color: #7ca982;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.form-steps-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.information-container {
+  background-color: #dbe3d9;
+  padding: 1.25rem;
+  border-radius: 12px;
+  width: min(90%, 760px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin: 10px;
+  animation: smoothSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.section-block {
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+.section-actions {
+  margin-top: 0.5rem;
+}
+
+.action-btns {
+  border: none;
+  background-color: #7ca982;
+  color: #ffffff;
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+@keyframes smoothSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  width: min(90%, 760px);
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.navigation-btns {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  height: 50px;
+  width: auto;
+  background-color: #7ca982;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  gap: 10px;
+}
+.navigation-btns span {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.navigation-btns:hover span {
+  max-width: 100px;
+  opacity: 1;
+  border-radius: 999px;
+}
+.navigation-btns:hover {
+  background-color: #96c39c;
+  border-radius: 999px;
+}
+.navigation-btns:active {
+  background-color: #f7fbf5;
+  color: #96c39c;
+  border-radius: 999px;
+}
