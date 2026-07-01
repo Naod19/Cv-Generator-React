@@ -3,6 +3,7 @@ import { ArrowRight, ArrowLeft, ArrowDown } from "lucide-react";
 import InputArea from "./components/InputArea";
 import CvPreview from "./components/CvPreview";
 import Button from "./components/Button";
+import CountrySelect from "./components/CountrySelect";
 import "./App.css";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       lastName: "",
       email: "",
       phoneNum: "",
+      country: "",
     },
     educationalExp: [
       {
@@ -169,6 +171,7 @@ function App() {
             />
             <InputArea
               label="Email"
+              type="email"
               value={cvData.personalInfo.email}
               onInput={(val) => personalInfoUpdater("email", val)}
               onKeyDown={handleKeyDown}
@@ -176,10 +179,15 @@ function App() {
             />
             <InputArea
               label="Phone Number"
+              type="tel"
               value={cvData.personalInfo.phoneNum}
               onInput={(val) => personalInfoUpdater("phoneNum", val)}
               onKeyDown={handleKeyDown}
               ph="+0 000 000 000"
+            />
+            <CountrySelect
+              value={cvData.personalInfo.country}
+              onChange={(val) => personalInfoUpdater("country", val)}
             />
           </form>
         )}
@@ -228,6 +236,7 @@ function App() {
                 />
                 <InputArea
                   label="Start date"
+                  type="month"
                   value={data.studyDateStart}
                   onInput={(val) =>
                     nestedInfoUpdater(
@@ -242,6 +251,7 @@ function App() {
                 />
                 <InputArea
                   label="End date"
+                  type="month"
                   value={data.studyDateEnd}
                   onInput={(val) =>
                     nestedInfoUpdater(
@@ -326,6 +336,7 @@ function App() {
                 />
                 <InputArea
                   label="Start date of the job"
+                  type="month"
                   value={data.startDate}
                   onInput={(val) =>
                     nestedInfoUpdater(
@@ -340,6 +351,7 @@ function App() {
                 />
                 <InputArea
                   label="End date of the job"
+                  type="month"
                   value={data.endDate}
                   onInput={(val) =>
                     nestedInfoUpdater("workExperience", data.id, "endDate", val)

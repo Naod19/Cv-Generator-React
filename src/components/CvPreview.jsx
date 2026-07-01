@@ -12,6 +12,7 @@ function CvPreview({ data }) {
           {data.personalInfo.phoneNum && (
             <span> • {data.personalInfo.phoneNum}</span>
           )}
+          {data.personalInfo.country && <p>{data.personalInfo.country}</p>}
         </div>
       </div>
 

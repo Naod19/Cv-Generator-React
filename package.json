@@ -13,7 +13,9 @@
     "html2pdf.js": "^0.14.0",
     "lucide-react": "^1.21.0",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "react-select": "^5.10.2",
+    "world-countries": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
