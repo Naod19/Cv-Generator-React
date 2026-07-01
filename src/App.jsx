@@ -20,7 +20,7 @@ function App() {
     },
     educationalExp: [
       {
-        id: generateId,
+        id: crypto.randomUUID(),
         schoolName: "",
         studyTitle: "",
         studyDateStart: "",
@@ -29,7 +29,7 @@ function App() {
     ],
     workExperience: [
       {
-        id: generateId,
+        id: crypto.randomUUID(),
         companyName: "",
         position: "",
         mainResponsibility: "",
@@ -63,7 +63,7 @@ function App() {
       educationalExp: [
         ...prevData.educationalExp,
         {
-          id: generateId,
+          id: crypto.randomUUID(),
           schoolName: "",
           studyTitle: "",
           studyDateStart: "",
@@ -79,7 +79,7 @@ function App() {
       workExperience: [
         ...prevData.workExperience,
         {
-          id: generateId,
+          id: crypto.randomUUID(),
           companyName: "",
           position: "",
           mainResponsibility: "",
