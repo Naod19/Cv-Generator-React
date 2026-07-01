@@ -236,7 +236,6 @@ function App() {
                 />
                 <InputArea
                   label="Start date"
-                  type="month"
                   value={data.studyDateStart}
                   onInput={(val) =>
                     nestedInfoUpdater(
@@ -251,7 +250,6 @@ function App() {
                 />
                 <InputArea
                   label="End date"
-                  type="month"
                   value={data.studyDateEnd}
                   onInput={(val) =>
                     nestedInfoUpdater(
@@ -336,7 +334,6 @@ function App() {
                 />
                 <InputArea
                   label="Start date of the job"
-                  type="month"
                   value={data.startDate}
                   onInput={(val) =>
                     nestedInfoUpdater(
@@ -351,7 +348,6 @@ function App() {
                 />
                 <InputArea
                   label="End date of the job"
-                  type="month"
                   value={data.endDate}
                   onInput={(val) =>
                     nestedInfoUpdater("workExperience", data.id, "endDate", val)
