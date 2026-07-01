@@ -155,3 +155,21 @@ body {
   color: #96c39c;
   border-radius: 999px;
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .preview-container,
+  .preview-container * {
+    visibility: visible;
+  }
+
+  .preview-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}

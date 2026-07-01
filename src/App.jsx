@@ -1,16 +1,11 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { ArrowRight, ArrowLeft, ArrowDown } from "lucide-react";
 import InputArea from "./components/InputArea";
 import CvPreview from "./components/CvPreview";
 import Button from "./components/Button";
-import html2pdf from "html2pdf.js";
 import "./App.css";
 
 function App() {
-  function generateId() {
-    return Date.now().toString(36) + Math.random().toString(36).slice(2);
-  }
-
   const [cvData, setCvData] = useState({
     personalInfo: {
       firstName: "",
@@ -144,20 +139,8 @@ function App() {
     }
   };
 
-  const cvPrintAreaRef = useRef(null);
-
   const handleDownloadPdf = () => {
-    const element = cvPrintAreaRef.current;
-
-    const options = {
-      margin: 15,
-      filename: "My_Cv.pdf",
-      image: { type: "jpeg", quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-    };
-
-    html2pdf().set(options).from(element).save();
+    window.print();
   };
 
   return (
@@ -377,10 +360,7 @@ function App() {
           </form>
         )}
         {formOrder[currentIndex] === "preview" && cvData && (
-          <div
-            className="information-container preview-container"
-            ref={cvPrintAreaRef}
-          >
+          <div className="information-container preview-container">
             <CvPreview data={cvData} />
           </div>
         )}
