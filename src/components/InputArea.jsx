@@ -4,12 +4,13 @@ export default function InputArea({
   onInput,
   onKeyDown,
   ph = "placeholder",
+  type = "text",
 }) {
   return (
     <div className="input-container">
       <label>{label}</label>
       <input
-        type="text"
+        type={type}
         required
         value={value}
         onChange={(e) => onInput(e.target.value)}
