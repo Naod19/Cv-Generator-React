@@ -1,108 +1,29 @@
 import { useState } from "react";
-import { ArrowRight, ArrowLeft, ArrowDown } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import InputArea from "./components/InputArea";
-import CvPreview from "./components/CvPreview";
 import Button from "./components/Button";
 import CountrySelect from "./components/CountrySelect";
 import "./App.css";
+import { useOutletContext, useNavigate } from "react-router";
 
 function App() {
-  const [cvData, setCvData] = useState({
-    personalInfo: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      phoneNum: "",
-      country: "",
-    },
-    educationalExp: [
-      {
-        id: crypto.randomUUID(),
-        schoolName: "",
-        studyTitle: "",
-        studyDateStart: "",
-        studyDateEnd: "",
-      },
-    ],
-    workExperience: [
-      {
-        id: crypto.randomUUID(),
-        companyName: "",
-        position: "",
-        mainResponsibility: "",
-        startDate: "",
-        endDate: "",
-      },
-    ],
-  });
-  const formOrder = [
-    "personalInfo",
-    "educationalExp",
-    "workExperience",
-    "preview",
-  ];
+  const {
+    cvData,
+    personalInfoUpdater,
+    addSchool,
+    addJob,
+    nestedInfoUpdater,
+    handleDelete,
+  } = useOutletContext();
+
+  const formOrder = ["personalInfo", "educationalExp", "workExperience"];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const personalInfoUpdater = (keyName, newInfo) => {
-    setCvData((prevData) => ({
-      ...prevData,
-      personalInfo: {
-        ...prevData.personalInfo,
-        [keyName]: newInfo,
-      },
-    }));
-  };
+  const navigate = useNavigate();
 
-  const addSchool = () => {
-    setCvData((prevData) => ({
-      ...prevData,
-      educationalExp: [
-        ...prevData.educationalExp,
-        {
-          id: crypto.randomUUID(),
-          schoolName: "",
-          studyTitle: "",
-          studyDateStart: "",
-          studyDateEnd: "",
-        },
-      ],
-    }));
-  };
-
-  const addJob = () => {
-    setCvData((prevData) => ({
-      ...prevData,
-      workExperience: [
-        ...prevData.workExperience,
-        {
-          id: crypto.randomUUID(),
-          companyName: "",
-          position: "",
-          mainResponsibility: "",
-          startDate: "",
-          endDate: "",
-        },
-      ],
-    }));
-  };
-
-  const nestedInfoUpdater = (sectionName, id, keyName, newInfo) => {
-    setCvData((prevData) => ({
-      ...prevData,
-      [sectionName]: prevData[sectionName].map((item) =>
-        item.id === id ? { ...item, [keyName]: newInfo } : item,
-      ),
-    }));
-  };
-
-  const handleDelete = (sectionName, idToDelete) => {
-    setCvData((prevData) => ({
-      ...prevData,
-      [sectionName]: prevData[sectionName].filter(
-        (job) => job.id !== idToDelete,
-      ),
-    }));
+  const goToPreview = () => {
+    navigate("/preview");
   };
 
   const handleNextButton = () => {
@@ -139,10 +60,6 @@ function App() {
         handleNextButton();
       }
     }
-  };
-
-  const handleDownloadPdf = () => {
-    window.print();
   };
 
   return (
@@ -367,11 +284,6 @@ function App() {
             ))}
           </form>
         )}
-        {formOrder[currentIndex] === "preview" && cvData && (
-          <div className="information-container preview-container">
-            <CvPreview data={cvData} />
-          </div>
-        )}
       </div>
       <div className="navigation-container">
         {currentIndex > 0 && (
@@ -385,18 +297,13 @@ function App() {
           </button>
         )}
         <p>{currentIndex + 1}</p>
-        {formOrder[currentIndex] === "preview" ? (
-          <button onClick={handleDownloadPdf} className="navigation-btns">
-            Download Cv <ArrowDown />
+        {formOrder[currentIndex] === "workExperience" ? (
+          <button onClick={goToPreview} className="navigation-btns">
+            Preview
           </button>
         ) : (
           <button onClick={handleNextButton} className="navigation-btns">
-            {currentIndex === formOrder.length - 2 ? (
-              "preview"
-            ) : (
-              <span>Next</span>
-            )}
-            {currentIndex < formOrder.length - 2 && <ArrowRight />}
+            <span>Next</span> <ArrowRight />
           </button>
         )}
       </div>
